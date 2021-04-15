@@ -1,9 +1,10 @@
 package pl.lublin.wsei.java.cwiczenia;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
+    /* Zadanie 10
     private static String leftPad(String aText, char aChar, int aWidth) {
         String res = aText;
         for (int i = 0; i < aWidth - aText.length(); i++) {
@@ -11,6 +12,7 @@ public class Main {
         }
         return res;
     }
+    */
 
     public static void main(String[] args) {
 
@@ -58,6 +60,7 @@ public class Main {
         } while (true);
         */
 
+        /* Zadanie 10
         Scanner input = new Scanner(System.in);
         int dec = 0;
         do {
@@ -68,5 +71,23 @@ public class Main {
             if (dec == 0) break;
             System.out.printf("DEC: %d, BIN: %s, HEX: %s\n", dec, leftPad(bin, '0', 8), leftPad(hex.toUpperCase(), '0', 4));
         } while (true);
+        */
+
+        //Zadanie 11
+        int[] liczby = new int[30];
+        Random rnd = new Random();
+
+        for(int i = 0; i < 30; i++)
+            liczby[i] = rnd.nextInt();
+        int mx = Integer.MIN_VALUE;
+        int mn = Integer.MAX_VALUE;
+        long avg = 0;
+        for(int l : liczby) {
+            System.out.println(l);
+            if(l < mn) mn = l;
+            if(l > mx) mx = l;
+            avg += 1;
+        }
+        System.out.printf("MIN = %d, MAX = %d, AVG = %f", mn,mx,(float)avg / liczby.length);
     }
 }
