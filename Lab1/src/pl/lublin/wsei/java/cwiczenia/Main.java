@@ -4,8 +4,17 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static String leftPad(String aText, char aChar, int aWidth) {
+        String res = aText;
+        for (int i = 0; i < aWidth - aText.length(); i++) {
+            res = aChar + res;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
+        /*
         //Zadanie 4
         System.out.println("Hello Java world\n");
 
@@ -46,6 +55,18 @@ public class Main {
             num2 = input.nextInt();
             if(num1 == 0 || num2 == 0) break;
             System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        } while (true);
+        */
+
+        Scanner input = new Scanner(System.in);
+        int dec = 0;
+        do {
+            System.out.print("Podaj liczbę którą mam zamienić: ");
+            dec = input.nextInt();
+            String hex = Integer.toHexString(dec);
+            String bin = Integer.toBinaryString(dec);
+            if (dec == 0) break;
+            System.out.printf("DEC: %d, BIN: %s, HEX: %s\n", dec, leftPad(bin, '0', 8), leftPad(hex.toUpperCase(), '0', 4));
         } while (true);
     }
 }
