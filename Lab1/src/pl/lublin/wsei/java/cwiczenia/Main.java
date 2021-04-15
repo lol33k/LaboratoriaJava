@@ -37,13 +37,15 @@ public class Main {
             System.out.printf("%d\t%f\t\n", i, Math.sin(i / 360.0 * 2 * Math.PI));
         }
 
-        //Zadanie 8
+        //Zadanie 8-9
         Scanner input = new Scanner(System.in);
-        int num1, num2;
-        System.out.print("Podaj pierwszą liczbę:");
-        num1 = input.nextInt();
-        System.out.print("Podaj drugą liczbę:");
-        num2 = input.nextInt();
-        System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        int num1=0, num2=0;
+        do {
+            System.out.print("Podaj liczby, które mam dodać: ");
+            num1 = input.nextInt();
+            num2 = input.nextInt();
+            if(num1 == 0 || num2 == 0) break;
+            System.out.printf("Wynik dodawania %d + %d = %d%n", num1, num2, num1 + num2);
+        } while (true);
     }
 }
