@@ -19,6 +19,6 @@
       <Button layoutX="676.0" layoutY="447.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Pokaż" />
       <TextField fx:id="txtAdresStrony" layoutX="92.0" layoutY="510.0" prefHeight="25.0" prefWidth="574.0" />
       <Label layoutX="92.0" layoutY="493.0" text="Adres strony" />
-      <Button layoutX="675.0" layoutY="510.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Załaduj" />
+      <Button layoutX="675.0" layoutY="510.0" mnemonicParsing="false" onAction="#btnZaladujStrone" prefHeight="25.0" prefWidth="77.0" text="Załaduj" />
    </children>
 </AnchorPane>
