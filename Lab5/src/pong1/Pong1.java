@@ -13,9 +13,7 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-
 public class Pong1 extends Application {
-
     private static final double WIDTH = 800;
     private static final double HEIGHT = 600;
     private static final double MARGIN = 50;
@@ -25,12 +23,31 @@ public class Pong1 extends Application {
     private static final double ARENAY1 = MARGIN;
     private static final double ARENAX2 = ARENAX1 + ARENAWIDTH;
     private static final double ARENAY2 = ARENAY1 + ARENAHEIGHT;
-    private static final double R = 10;
 
-    private double x = ARENAX1 + ARENAWIDTH / 2;
-    private double y = ARENAY1 + ARENAHEIGHT / 2;
-    private double vx = 5;
-    private double vy = 2;
+    private static final int LICZBAKULEK = 10;
+    private Kulka[] kulki = new Kulka[LICZBAKULEK];
+
+    private void initKule() {
+        Random lott = new Random();
+        for (int i = 0; i < LICZBAKULEK; i++) {
+            kulki[i] = new Kulka(
+                    lott.nextDouble() * ARENAWIDTH + ARENAX1,
+                    lott.nextDouble() * ARENAHEIGHT + ARENAY1,
+                    5 + lott.nextDouble() * 20,
+                    5 + lott.nextDouble() * 20);
+        }
+    }
+
+    private void run(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.fillRect(ARENAX1, ARENAY1, ARENAWIDTH, ARENAHEIGHT);
+
+        for (int i = 0; i < LICZBAKULEK; i++) {
+            kulki[i].checkBoundaryCollision(ARENAX1, ARENAY1, ARENAX2, ARENAY2);
+            kulki[i].update();
+            kulki[i].draw(gc);
+        }
+    }
 
     @Override
     public void start(Stage stage) {
@@ -44,31 +61,9 @@ public class Pong1 extends Application {
         stage.setScene(new Scene(new StackPane(canvas)));
         stage.show();
 
+        initKule();
         t.play();
     }
-
-    private void initKula() {
-        Random lott = new Random();
-        x = lott.nextDouble() * ARENAWIDTH + ARENAX1;
-        y = lott.nextDouble() * ARENAHEIGHT + ARENAY1;
-        vx = 5 + lott.nextDouble() * 20;
-        vy = 5 + lott.nextDouble() * 20;
-    }
-
-    private void run(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-        gc.fillRect(ARENAX1, ARENAY1, ARENAWIDTH, ARENAHEIGHT);
-
-        if ((x - R <= ARENAX1) || ((x + R >= ARENAX2))) vx = -vx;
-        if ((y - R <= ARENAY1) || ((y + R >= ARENAY2))) vy = -vy;
-
-        x += vx;
-        y += vy;
-
-        gc.setFill(Color.WHITESMOKE);
-        gc.fillOval(x - R, y - R, 2 * R, 2 * R);
-    }
-
 
     public static void main(String[] args) {
         launch(args);
