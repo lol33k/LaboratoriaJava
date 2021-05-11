@@ -70,7 +70,7 @@ public class Pong1 extends Application {
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Timeline t = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
+        Timeline t = new Timeline(new KeyFrame(Duration.millis(25), e -> run(gc)));
         t.setCycleCount(Timeline.INDEFINITE);
 
         stage.setTitle("Kulki!");
